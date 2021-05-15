@@ -36,8 +36,9 @@ function xprime=flightg(t,x)
     % Lift coefficient
     C_l=0.7*C_d;
     
-    % Surface area
+    % Surface area (used for drag only)
     A=.25*pi*(1.75/12)^2; 
+    crossA=0.00572;
     
     % Angular velocity and velocity
     av=getGlobalR;
@@ -57,12 +58,13 @@ function xprime=flightg(t,x)
     flightangle=atand(vy/vx); 
                     
     % Magnus equation   
-    %Mc=(1/2)*C_l*p*A; % wrong calculation, decided to hard code
-    Mc=0.000005;
+    Mcbug=(1/2)*C_l*p*crossA^2; % wrong calculation, decided to hard code 
+    % A might be off, its surface not cross section
+    disp(Mcbug);
+    Mc=0.00005;
     %Fm=(Mc*(cross(wHat,v)/abs(cross(wHat,v)))); % sane version
     ME=cross(wHat,v);
     Fm=(Mc*ME);
-    disp(Fm);
     
     Fmx=Fm(1);
     Fmy=Fm(2);
