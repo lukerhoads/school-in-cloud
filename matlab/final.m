@@ -1,6 +1,6 @@
 function Golfball
     disp('Starting calculations...');
-    rpm=2500; % rpm
+    rpm=3500; % rpm
     convR=rpm * 0.10472; % radians per second
     setGlobalR(convR);
     setGlobalCalls(0);
@@ -60,7 +60,7 @@ function xprime=flightg(t,x)
     % Magnus equation   
     Mcbug=(1/2)*C_l*p*crossA^2; % wrong calculation, decided to hard code 
     % A might be off, its surface not cross section
-    disp(Mcbug);
+    %disp(Mcbug);
     Mc=0.00005;
     %Fm=(Mc*(cross(wHat,v)/abs(cross(wHat,v)))); % sane version
     ME=cross(wHat,v);
